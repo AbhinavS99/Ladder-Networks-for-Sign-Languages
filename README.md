@@ -23,9 +23,17 @@ supervised and unsupervised learning in deep neural networks. In ladder networks
 
 ## Project Description
 ### Introduction
+American Sign Language     |  
+:-------------------------:|
+![](images/american_sign_language.png) |  
+
 The project aims to demonstrate the ability of ladder networks to translate sign languages into text while using lesser data than the traditional models. Vast amount of labelled data in context sign languages is a rare occurence. Ladder networks are known to reduce the amount of labels required and thus can make the translation task feasible.
 
 ### Dataset
+Dataset Sample             |  
+:-------------------------:|
+![](images/dataset-sample.png) |  
+
 Sign Language MNIST dataset from kaggle is used for this project. The dataset contains all the alphabets except J and Z because they are motion based and cannot be captured due to obvious reasons. In total there are 23 classes. The dataset contains 27455 training images 3586 validation images and 3586 test images. Each image is uni-channel i.e. grayscale image with dimensions as 28x28. The preprocessing stages include normalizing each pixel value from 0 to 1 to prevent any sort of overflows. No image augmentation was done whatsoever as the required amount of data was already sufficient. The dataset had a fair class balance wherein each class had an average of 1143 images. The maximum number of images for a class were 1294 and the least was 957.  
 [Link to dataset](https://www.kaggle.com/datamunge/sign-language-mnist)
 
@@ -45,7 +53,7 @@ Ladder network is a semi-supervised learning network which combines a traditiona
 #### Cost Function
 Ladder Network Algorithm and Cost Function |  
 :-------------------------:|
-![](images/ladder_algorithm.png) |  
+![](images/ladder_algorithm.png) |    
 
 The loss function for the ladder network is a combination of both cross entropy loss (derived from the classification part) and the sum of all the layers' reconstruction cost. In context of CNN ladder network only the reconstruction loss of last layer is taken into consideration. The effect of the reconstruction cost is such that it forces the network to learn weights and distributions such that it can generate accurate predictions and generalize unseen data.
 
@@ -88,12 +96,17 @@ The process of finding the optimal architecture:
  
  The ladder network out-performs the baseline CNN in all the settings in all the evaluation metrics viz. accuracy, precision, recall. The ladder CNN with 100 labels per class performs equivalent to baseline CNN with 200 labels per class. Thus we can see that ladder networks show promising results even when the labelled data is less.
  
- Two confusion matrices were prepared one at 10 labels per class and other at 200 labels per class.
+ Two confusion matrices were prepared one at 10 labels per class and other at 200 labels per class. These confusion matrices indicate which classes are the most and least likely to be wrongly predicted. The confusion matrix in the right has a higher false prediction rate because the model uses less data in it.
  
  Confusion Matrix(labels = 10) |  Confusion Matrix(labels = 200)
 :-------------------------:|:-------------------------:
-![](images/CF_10.png)  |  ![](images/CF_200.png)
+![](images/CF_10.png)      |  ![](images/CF_200.png)
  
+ 
+ An observation that can be noted from here is that G is often misclassified as T because both of them have a protuding finger from the fist. However the models are easily able to distinguish between H and T because they are quite different.
+ 
+ #### Error Analysis
+ The model still seems to overfit and not generalize well because the training accuracy in all the settings was close to 98%. This means the model is not generalizing properly. This was expected as less data was used deliberately. The is also the presence of avoidable bias. Human error and Bayes error should be very similar to each other and both should be close to 0 since sign language recognition and translation is a easy task for human beings. The small amount of avoidable bias (around 2%) is due to Gaussian Noise that has been added in the ladder network.
  
  
 ### References
