@@ -3,9 +3,7 @@
 Ladder networks are an amalgamation of 
 supervised and unsupervised learning in deep neural networks. In ladder networks, both the supervised and the unsupervised components are trained simultaneously to minimize the sum of the supervised and unsupervised cost functions by backpropagation, avoiding the need of layer-wise pre-training. Ladder networks achieve state of the art performance in semi-supervised MNIST and CIFAR-10 classifications.
 
-<br>
-<div style="text-align:center"><img src="./images/ladder_net.png" /></div>.
-Fig: 2 Layer Ladder Network
+
 
 ---
 <h2>Project Description</h2>
@@ -29,4 +27,4 @@ Ladder network is a semi-supervised learning network which combines a traditiona
   <li>Rasmus, Antti, Harri Valpola, and Tapani Raiko. “Lateral Connections in Denoising Autoencoders Support Supervised Learning.” arXiv preprint arXiv:1504.08215 (2015).</li>
   <li>Valpola, Harri. “From neural PCA to deep unsupervised learning.” arXiv preprint arXiv:1411.7783 (2014).</li>
 </ol>
-**Note:** Not an exhaustive list
+Note:Not an exhaustive list
